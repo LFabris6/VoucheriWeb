@@ -18,8 +18,8 @@ def index(request):
                 send_mail(
                 email,
                 poruka,
-                'adrtiaticwebdev@gmail.com',
-                ['adrtiaticwebdev@gmail.com'],
+                'adriaticwebdev@gmail.com',
+                ['adriaticwebdev@gmail.com'],
                 fail_silently=False,
                 )
                 messages.success(request, "Hvala vam, vaša poruka je poslana, odgovoriti ćemo vam u što kraćem roku.")
