@@ -1,0 +1,1 @@
+web: gunicorn adriaticweb.wsgi --log-file -
