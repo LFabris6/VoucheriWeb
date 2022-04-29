@@ -39,14 +39,22 @@ def create(od, do, sheet, request):
 
 
 def ispuni(ime, prezime, broj, gmail,datum, pdfslist):
-    print("kreiramo voucher za" + ime)
-    document = MailMerge(template)
-    document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
-    path = "static/voucheri/voucher" + str(broj) + ".docx"
-    output_file = "static/voucheri/voucher" + str(broj) + ".pdf"
-    document.write(path)
-    convert(path)
-    pdfslist.append(open(output_file, 'rb'))
+    try:
+        print("pocetak docx " + ime)
+        document = MailMerge(template)
+        document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
+        path = "static/voucheri/voucher" + str(broj) + ".docx"
+        output_file = "static/voucheri/voucher" + str(broj) + ".pdf"
+        document.write(path)
+        print("docx sejvan " + ime)
+        convert(path)
+        print("d " + ime)
+        pdfslist.append(open(output_file, 'rb'))
+
+    except Exception as e:
+        print(e)
+
+    
 
 def ocisti():
     dir = "static/voucheri/"
