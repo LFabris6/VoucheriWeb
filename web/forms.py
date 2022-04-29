@@ -1,16 +1,21 @@
 from django import forms
 
 class Kontakt(forms.Form):
-    email = forms.EmailField(max_length=50)
-    poruka = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 40}))
+    od = forms.IntegerField()
+    do = forms.IntegerField()
+    sheet = forms.IntegerField()
 
     def __init__(self, *args, **kwargs):
         super(Kontakt, self).__init__(*args, **kwargs)
 
         for visible in self.visible_fields():
             visible.field.widget.attrs['class'] = 'form-control'
+        
+        self.fields['od'].widget.attrs['placeholder'] = "Od(Redak)"
+        self.fields['do'].widget.attrs['placeholder'] = "Do(Redak)"
+        self.fields['sheet'].widget.attrs['placeholder'] = "Redni broj Excel liste"
 
-        self.fields['email'].widget.attrs['placeholder'] = "Email"
-        self.fields['poruka'].widget.attrs['placeholder'] = "Poruka"
+
+
         
         

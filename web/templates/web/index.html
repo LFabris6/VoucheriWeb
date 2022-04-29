@@ -28,29 +28,34 @@
 
 
 
-  <link href="{%static 'css/styles.css'%}" rel="stylesheet" />
+  <link href="{%static 'css/st2.css'%}" rel="stylesheet" />
 
 
 </head>
 
 <body>
 
+
+
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.html">Adriatic Web</a></h1>
+      <h1 class="logo"><a href="index.html">Leo</a></h1>
       
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">Usluge</a></li>
-          <li><a class="nav-link scrollto" href="#services">O nama</a></li>
-          <li><a class="nav-link scrollto o" href="#portfolio">Projekti</a></li>
-          <li><a class="nav-link scrollto" href="#team">Naš tim</a></li>
+          <li><a class="nav-link scrollto active" href="#hero">Početna</a></li>
+          <li><a class="nav-link scrollto" href="#about">Voucheri</a></li>
+          {%if preuzmi%}
+          <li><a style="color:green" class="nav-link scrollto" href="/static/finals/final.pdf">
+            Preuzmi
+          </a></li>
+            {%endif%}
           
-          <li><a class="nav-link scrollto" href="#kontakt">Kontakt</a></li>
-          <li><a class="getstarted scrollto" href="#about">Cijena</a></li>
+
+          
+    
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -58,380 +63,72 @@
     </div>
   </header><!-- End Header -->
 
+  
+<br><br>
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-          <h1>Adriatic Web</h1>
-          <h2>Tim talentiranih web dizajnera i programera</h2>
+          <h1>Covid Voucheri</h1>
+          <h2>Ispuni sljedeće korake i preuzmi datoteku sa voucherima.</h2>
         </div>
       </div>
       <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto">O nama</a>
-      </div>
-      
-      <div class="row icon-boxes">
         
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+       
+        <form id="voucher" method="POST" role="form" >
+          {%csrf_token%}
+          <div class="row">
+            
+            
+          </div>
+          <div class="form-group mt-3">
+            
+            {{form.od}}
+          </div>
+          <div class="form-group mt-3">
+            {{form.do}}
+          </div>
+          <div class="form-group mt-3">
+            {{form.sheet}}
+          </div>
+      
+          <a onclick="func()" class="btn-get-started scrollto">Kreni</a>
+         
           
-          <div class="icon-box">
-            <div class="icon"><i class="ri-stack-line"></i></div>
-            <h4 class="title"><a href="">Izrada stranice</a></h4>
-            <p class="description">Izrađujemo najmodernije web stranice prilagođene svim preglednicima i uređajima.</p>
+          <div class="text-center">
+            <br>
+            
+        
           </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
-          <div class="icon-box">
-            <div class="icon"><i class="ri-command-line"></i></div>
-            <h4 class="title"><a href="">Besplatan Hosting</a></h4>
-            <p class="description">Nudimo besplatan hosting stranice preko Heroku cloud platforme.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
-          <div class="icon-box">
-            <div class="icon"><i class="ri-palette-line"></i></div>
-            <h4 class="title"><a href="">Održavanje</a></h4>
-            <p class="description">Uvijek smo tu da izmijenimo te prilagodimo vašu web stranicu u bilo kojem trenutku kao i riješimo probleme ukoliko nastanu.</p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
-          <div class="icon-box">
-            <div class="icon"><i class="ri-fingerprint-line"></i></div>
-            <h4 class="title"><a href="">Marketing</a></h4>
-            <p class="description">Vaši su kupci na internetu, te se možemo pobrinuti da naiđu na vašu stranicu.</p>
-          </div>
-        </div>
-
+          {% if messages %}
+          <br>
+        
+        {% endif %}
+        </form>
+        <ul class="alert alert-info text-center" role="alert">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </ul>
+        
+        
       </div>
+
     </div>
   </section><!-- End Hero -->
-  
+
+  <div class="text-center">
+    
+  </div>
+  <script>
+    function func() {
+        document.getElementById("voucher").submit();
+    }
+  </script>
   <main id="main">
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>O nama</h2>
-          <p></p>
-        </div>
-
-        <div class="row content">
-          <div class="col-lg-6">
-            <p>
-             Naš tim programera i web dizajnera odgovara na sve vaše želje te izrađuje najkvalitetnije web stranice. Bile one korporativne ili kompleksne web aplikacije.
-
-            </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Konzultacija oko dizajna i spektra boja</li>
-              <li><i class="ri-check-double-line"></i> Besplatan web hosting</li>
-              <li><i class="ri-check-double-line"></i> Odgovaramo u roku 24h te rješavamo sve nastale probleme u što kraćem roku</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0">
-            <p>
-              Za izradu web stranica koristimo sljedeće tehnologije: Python(Django) te za dizajn Html, Css i Javascript.
-            </p>
-            <a href="#" class="btn-learn-more">Usluge</a>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts section-bg">
-      <div class="container">
-
-        <div class="row justify-content-end">
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="11" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Izvršenih projekata</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="11" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Zadovoljnih klijenata</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Godina iskustva</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-5 col-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <span data-purecounter-start="0" data-purecounter-end="36" data-purecounter-duration="2" class="purecounter"></span>
-              <p>Izrađenih Web stranica</p>
-            </div>
-          </div>
-
-
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Naš Tim</h2>
-          <p>Naš tim sastoji se od mladih programera i web dizajnera koji će izraditi vašu web stranicu uz najveće detalje.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
-                
-              </div>
-              <div class="member-info">
-                <h4>Leo</h4>
-                <span>Full stack Web developer</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
-              
-              </div>
-              <div class="member-info">
-                <h4>Ivan</h4>
-                <span>Web dizajner</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
-                
-              </div>
-              <div class="member-info">
-                <h4>Zara</h4>
-                <span>Web dizajner</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
-            <div class="member">
-              <div class="member-img">
-                <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
-                
-              </div>
-              <div class="member-info">
-                <h4>Marko</h4>
-                <span>Web dizajner i marketing</span>
-              </div>
-            </div>
-          </div>
-          
-
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Cijena Usluge</h2>
-          <p>U nastavku su navedene cijena i usluge koje nudimo uz zadani plan.</p>
-        </div>
-
-      <div class="d-flex justify-content-center">
-        <div class="col-lg-4 col-md-6" data-aos="zoom-im" data-aos-delay="100">
-            <div class="box">
-              <h3>Web stranica</h3>
-              <h4><sup>Kn</sup>450-750<span>Fiksna Cijena</span></h4>
-              <ul>
-                <li>Izrada i dizajn</li>
-                <li>Web Hosting</li>
-                <li>Održavanje</li>
-                
-              </ul>
-              <div class="btn-wrap">
-                <a href="#kontakt" class="btn-buy">Kontaktiraj nas!</a>
-              </div>
-            </div>
-          </div>
-
-         
-        </div>
-          
-        </div>
-
-      </div>
-    </section><!-- End Pricing Section -->
-
-   
-
-    <!-- ======= Contact Section ======= -->
-    <section id="kontakt" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Kontakt</h2>
-          <p>S obzirom da nam je ured online, nemamo fizičku lokaciju. Kontaktirajte nas putem email adrese ili telefona.</p>
-        </div>
-
-        <div>
-          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45068.51822444797!2d13.629696509198643!3d45.090205777103975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477cbf634d5c86ff%3A0xffc69f61c598ae53!2sRovinj!5e0!3m2!1sen!2shr!4v1641225388017!5m2!1sen!2shr" frameborder="0" allowfullscreen></iframe>
-        </div>
-        
-
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Lokacija:</h4>
-                <p>Online-ured Rovinj 52210 Hrvatska</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>adriaticweb@gmail.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Telefon:</h4>
-                <p>+385 994351095</p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form  method="POST" role="form" >
-              {%csrf_token%}
-              <div class="row">
-                
-                
-              </div>
-              <div class="form-group mt-3">
-                
-                {{form.email}}
-              </div>
-              <div class="form-group mt-3">
-                {{form.poruka}}
-              </div>
-              
-              
-              
-              <div class="text-center">
-                <br>
-                
-                <button type="submit" class="btn btn-light">Pošalji!</button>
-              </div>
-              {% if messages %}
-              <br>
-        		<ul class="alert alert-success text-center" role="alert">
-                    {% for message in messages %}
-            		{{ message }}
-            		{% endfor %}
-        		</ul>
-        		{% endif %}
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Adriatic Web</h3>
-            <p>
-              <br>
-              Online ured<br>
-               Rovinj, 52210<br>
-              Hrvatska <br><br>
-              <strong>Telefon:</strong> +385 994351095<br>
-              <strong>Email:</strong> adriaticweb@gmail.com<br>
-            </p>
-          </div>
-
-         
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Ponude</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Izrada Web stranice</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Hosting</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Održavanje</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Konzultacije oko dizajna</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Primaj ponude!</h4>
-            <p>Primajte najnovije ponude i vijesti</p>
-            <form  method="post">
-              <input type="email" name="email"><input type="submit" value="Pretplati se">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container d-md-flex py-4">
-
-      <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-          &copy; Copyright <strong><span>Adriatic web</span></strong>
-        </div>
-        
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-
-      </div>
-    </div>
-  </footer><!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -448,6 +145,7 @@
   <script src="{%static 'vendor/php-email-form/validate.js'%}"></script>
   <!-- Template Main JS File -->
   <script src="{%static 'js/main.js'%}"></script>
+ 
 
 </body>
 
