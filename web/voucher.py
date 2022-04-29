@@ -4,7 +4,6 @@ import os
 import gspread
 from mailmerge import MailMerge
 from PyPDF2 import PdfFileMerger
-import comtypes.client
 from django.contrib import messages
 from docx2pdf import convert
 import docx2pdf
