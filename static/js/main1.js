@@ -1,5 +1,6 @@
 (function() {
-    "use strict";
+
+    window.addEventListener('load', AOS.refresh)
   
     /**
      * Easy selector helper function
