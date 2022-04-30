@@ -103,3 +103,45 @@
         
           </div>
           {% if messages %}
+          <br>
+        
+        {% endif %}
+        </form>
+        <ul class="alert alert-info text-center" role="alert">
+          {% for message in messages %}
+          {{ message }}
+          {% endfor %}
+        </ul>
+        
+        
+      </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+  <div class="text-center">
+    
+  </div>
+  <script>
+    function func() {
+        document.getElementById("voucher").submit();
+    }
+  </script>
+  <main id="main">
+
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+
+
+ 
+  <!-- Template Main JS File -->
+  <script src="{%static 'js/main.js'%}"></script>
+ 
+<img src="{%static 'img/img1.jpg'%}">
+
+</body>
+
+</html>
