@@ -45,7 +45,10 @@ def ispuni(ime, prezime, broj, gmail,datum, pdfslist):
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
         path = "static/voucheri/voucher" + str(broj) + ".docx"
         output_file = "static/voucheri/voucher" + str(broj) + ".pdf"
+
         document.write(path)
+        print("word je napravljen")
+
         print("docx sejvan " + ime)
         convert(path)
         print("d " + ime)
