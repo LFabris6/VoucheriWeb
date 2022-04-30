@@ -1,12 +1,105 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Covidmp</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+ 
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+
+  <link href="{%static 'vendor/aos/aos.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/bootstrap-icons/bootstrap-icons.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/glightbox/css/glightbox.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/remixicon/remixicon.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/swiper/swiper-bundle.min.css'%}" rel="stylesheet" />
+
+
+
+  <link href="{%static 'css/st3.css'%}" rel="stylesheet" />
+
+
 </head>
+
 <body>
- hello 
-</body>
-</html>
+
+
+
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">Leo</a></h1>
+      
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Početna</a></li>
+          <li><a class="nav-link scrollto" href="#about">Voucheri</a></li>
+          {%if preuzmi%}
+          <li><a style="color:green" class="nav-link scrollto" href="/static/finals/final.pdf">
+            Preuzmi
+          </a></li>
+            {%endif%}
+          
+
+          
+    
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  
+<br><br>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        <div class="col-xl-7 col-lg-9 text-center">
+          <h1>Covid Voucheri</h1>
+          <h2>Ispuni sljedeće korake i preuzmi datoteku sa voucherima.</h2>
+        </div>
+      </div>
+      <div class="text-center">
+        
+       
+        <form id="voucher" method="POST" role="form" >
+          {%csrf_token%}
+          <div class="row">
+            
+            
+          </div>
+          <div class="form-group mt-3">
+            
+            {{form.od}}
+          </div>
+          <div class="form-group mt-3">
+            {{form.do}}
+          </div>
+          <div class="form-group mt-3">
+            {{form.sheet}}
+          </div>
+      
+          <a onclick="func()" class="btn-get-started scrollto">Kreni</a>
+         
+          
+          <div class="text-center">
+            <br>
+            
+        
+          </div>
+          {% if messages %}
