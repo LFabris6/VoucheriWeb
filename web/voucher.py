@@ -1,12 +1,12 @@
 
-import shutil
 import os
+import shutil
+from django.conf import settings as django_settings
 import gspread
 from mailmerge import MailMerge
 from PyPDF2 import PdfFileMerger
-from django.contrib import messages
 from docx2pdf import convert
-import docx2pdf
+
 
 template = "static/api/voucher.docx"
 
@@ -43,7 +43,10 @@ def ispuni(ime, prezime, broj, gmail,datum, pdfslist):
         print("pocetak docx " + ime)
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
-        path = "static/voucheri/voucher" + str(broj) + ".docx"
+     
+        file =os.path.join(django_settings.STATIC_ROOT)
+        path = file + r"\voucheri\voucher" + str(broj) + ".docx"
+   
         output_file = "static/voucheri/voucher" + str(broj) + ".pdf"
 
         document.write(path)

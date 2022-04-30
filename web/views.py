@@ -6,7 +6,8 @@ from django.contrib import messages
 from .forms import Kontakt
 from .voucher import create
 import mimetypes
-
+from django.conf import settings as django_settings
+import os
 def index(request):
     
     preuzmi = False
