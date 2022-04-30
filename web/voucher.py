@@ -11,7 +11,7 @@ import docx2pdf
 template = "static/api/voucher.docx"
 
 def create(od, do, sheet, request):
-    print(docx2pdf.__version__)
+    
     try:
         gc = gspread.service_account(filename='static/api/client.json')
         sh = gc.open_by_key('1A41ogDqUWtHUALXmBpjP8Sj_ZRN8mq9c7t43LjYm2x4')
