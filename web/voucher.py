@@ -30,8 +30,10 @@ def create(od, do, sheet, request):
         ispuni(ime, prezime, broj, gmail, datum)
     
  
-
-    spoji()
+    try:
+        spoji()
+    except Exception as e:
+        print(e)
     ocisti()
    
     return 0
