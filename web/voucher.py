@@ -47,6 +47,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
      
         voucher_path = file + r"\voucheri\voucher" + str(broj) + ".docx"
+        print(voucher_path)
    
         document.write(voucher_path)
         print("docx sejvan " + ime)
@@ -60,9 +61,9 @@ def ispuni(ime, prezime, broj, gmail,datum):
 
 def spoji():
 
-    all_dir = file + r"\voucheri/"
+    all_dir = file + r"\voucheri"
     for i in os.listdir(all_dir):
-        path = os.path.join(all_dir, i)
+        path = all_dir + r"\{}"
         files.append(path)
     
     
