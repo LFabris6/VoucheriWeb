@@ -46,7 +46,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
      
-        voucher_path = file + r"/voucheri/voucher" + str(broj) + ".docx"
+        voucher_path = file + r"\voucheri\voucher" + str(broj) + ".docx"
         print(voucher_path)
    
         document.write(voucher_path)
@@ -63,7 +63,7 @@ def spoji():
 
     all_dir = file + r"\voucheri"
     for i in os.listdir(all_dir):
-        path = all_dir + r"\{}"
+        path = r'{}\{}'.format(file, i)
         files.append(path)
     
     
