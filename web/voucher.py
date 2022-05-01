@@ -6,9 +6,12 @@ import gspread
 from mailmerge import MailMerge
 from PyPDF2 import PdfFileMerger
 from docx2pdf import convert
-
+from docx import Document
+from docxcompose.composer import Composer
 
 template = "static/api/voucher.docx"
+composed = "static/finals/final.docx"
+files = []
 
 def create(od, do, sheet, request):
     
@@ -19,47 +22,62 @@ def create(od, do, sheet, request):
     except:
         return -1
 
-    pdfslist = PdfFileMerger()
+
     for i in range(od, do+1):
         ime = worksheet.cell(i, 1).value
         prezime = worksheet.cell(i, 2).value
         broj = worksheet.cell(i, 3).value
         gmail =  worksheet.cell(i, 4).value
         datum =  worksheet.cell(i, 5).value
-        ispuni(ime, prezime, broj, gmail, datum, pdfslist)
+        ispuni(ime, prezime, broj, gmail, datum)
     
-    with open("static/finals/final.pdf", "wb") as result_pdf:
-        pdfslist.write(result_pdf)
-        pdfslist.close()
+ 
 
-
+    spoji()
     ocisti()
    
     return 0
 
 
-def ispuni(ime, prezime, broj, gmail,datum, pdfslist):
+def ispuni(ime, prezime, broj, gmail,datum):
     try:
         print("pocetak docx " + ime)
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
      
         file =os.path.join(django_settings.STATIC_ROOT)
-        path = file + r"\voucheri\voucher" + str(broj) + ".docx"
+        voucher_path = file + r"\voucheri\voucher" + str(broj) + ".docx"
    
-        output_file = "static/voucheri/voucher" + str(broj) + ".pdf"
-
-        document.write(path)
-        print("word je napravljen")
-
+        document.write(voucher_path)
         print("docx sejvan " + ime)
-        convert(path)
-        print("d " + ime)
-        pdfslist.append(open(output_file, 'rb'))
+
+        
 
     except Exception as e:
         print(e)
 
+
+
+def spoji():
+    all_dir = "static/voucheri/"
+    for i in os.listdir(all_dir):
+        path = os.path.join(all_dir, i)
+        files.append(path)
+    
+    
+    result = Document(files[0])
+    result.add_page_break()
+    composer = Composer(result)
+
+    for i in range(1, len(files)):
+        doc = Document(files[i])
+
+        if i != len(files) - 1:
+            doc.add_page_break()
+
+        composer.append(doc)
+
+    composer.save(composed)
     
 
 def ocisti():
