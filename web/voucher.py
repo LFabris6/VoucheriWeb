@@ -7,8 +7,9 @@ from mailmerge import MailMerge
 from docx import Document
 from docxcompose.composer import Composer
 
+file =os.path.join(django_settings.STATIC_ROOT)
 template = "static/api/voucher.docx"
-composed = "static/finals/final.docx"
+composed = file + "/finals/final.docx"
 files = []
 
 def create(od, do, sheet, request):
@@ -45,7 +46,6 @@ def ispuni(ime, prezime, broj, gmail,datum):
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
      
-        file =os.path.join(django_settings.STATIC_ROOT)
         voucher_path = file + r"\voucheri\voucher" + str(broj) + ".docx"
    
         document.write(voucher_path)
@@ -59,7 +59,8 @@ def ispuni(ime, prezime, broj, gmail,datum):
 
 
 def spoji():
-    all_dir = "static/voucheri/"
+
+    all_dir = file + "/voucheri/"
     for i in os.listdir(all_dir):
         path = os.path.join(all_dir, i)
         files.append(path)
