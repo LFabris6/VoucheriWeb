@@ -60,7 +60,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
 
 def spoji():
 
-    all_dir = file + "\voucheri\"
+    all_dir = file + r"\\voucheri\\"
     for i in os.listdir(all_dir):
         path = os.path.join(all_dir, i)
         files.append(path)
