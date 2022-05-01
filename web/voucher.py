@@ -4,8 +4,6 @@ import shutil
 from django.conf import settings as django_settings
 import gspread
 from mailmerge import MailMerge
-from PyPDF2 import PdfFileMerger
-from docx2pdf import convert
 from docx import Document
 from docxcompose.composer import Composer
 
