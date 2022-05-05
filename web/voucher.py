@@ -8,6 +8,7 @@ from docx import Document
 from docxcompose.composer import Composer
 import pathlib
 
+composed = os.path.join(file, "finals")
 file =os.path.join(django_settings.STATIC_ROOT)
 template = "static/api/voucher.docx"
 
@@ -33,11 +34,14 @@ def create(od, do, sheet, request):
 
     try:
         spoji()
+        for i in os.listdir(composed):
+            print(i)
+   
     except Exception as e:
         print(e)
- 
+
+
     
-   
     return 0
 
 
@@ -61,7 +65,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
 
 
 def spoji():
-    composed = os.path.join(file, "finals")
+    
     dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
     for i in pathlib.Path(dir).glob('*.docx'):
         file_path = os.path.join(dir, i)
