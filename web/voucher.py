@@ -10,7 +10,7 @@ import pathlib
 
 file =os.path.join(django_settings.STATIC_ROOT)
 template = "static/api/voucher.docx"
-composed = os.path.join(django_settings.STATIC_ROOT, "finals", "final.pdf")
+composed = os.path.join(django_settings.STATIC_ROOT, "finals", "final.docx")
 files = []
 
 def create(od, do, sheet, request):
