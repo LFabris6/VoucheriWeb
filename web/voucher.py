@@ -46,8 +46,8 @@ def ispuni(ime, prezime, broj, gmail,datum):
         print("pocetak docx " + ime)
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
-        broj+=5
-        voucher_path = os.path.join(file, "voucheri", "voucher" + broj + ".docx")
+     
+        voucher_path = os.path.join(file, "voucheritest", "voucher" + broj + ".docx")
         print(voucher_path)
    
         document.write(voucher_path)
