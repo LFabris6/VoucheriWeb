@@ -35,7 +35,7 @@ def create(od, do, sheet, request):
 
     try:
         spoji()
-        ocisti()
+        #ocisti()
 
    
     except Exception as e:
