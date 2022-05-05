@@ -10,7 +10,7 @@ import pathlib
 
 file =os.path.join(django_settings.STATIC_ROOT)
 template = "static/api/voucher.docx"
-composed = os.path.join(django_settings.STATIC_ROOT, "finals", "final.docx")
+composed = os.path.join(django_settings.STATIC_ROOT, "finals", "final3.docx")
 files = []
 
 def create(od, do, sheet, request):
@@ -46,7 +46,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
         print("pocetak docx " + ime)
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
-     
+        broj+=5
         voucher_path = os.path.join(file, "voucheri", "voucher" + broj + ".docx")
         print(voucher_path)
    
