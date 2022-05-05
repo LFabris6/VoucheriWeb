@@ -35,8 +35,8 @@ def create(od, do, sheet, request):
 
     try:
         spoji()
-        for i in os.listdir(composed):
-            print(i)
+        ocisti()
+
    
     except Exception as e:
         print(e)
