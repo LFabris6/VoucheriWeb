@@ -29,13 +29,15 @@ def create(od, do, sheet, request):
         gmail =  worksheet.cell(i, 4).value
         datum =  worksheet.cell(i, 5).value
         ispuni(ime, prezime, broj, gmail, datum)
-    
- 
+
     try:
-        spoji()
+        all_dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
+        for i in os.listdir(all_dir):
+            print(i)
     except Exception as e:
         print(e)
-    ocisti()
+ 
+    
    
     return 0
 
@@ -46,7 +48,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
         document = MailMerge(template)
         document.merge(Ime=ime, prezime=prezime, email=gmail, broj = broj, rodenje=datum)
      
-        voucher_path = file + r"\voucheri\voucher" + str(broj) + ".docx"
+        voucher_path = os.path.join(file, "voucheri", "voucher" + broj + ".docx")
         print(voucher_path)
    
         document.write(voucher_path)
@@ -58,6 +60,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
         print(e)
 
 
+'''
 
 def spoji():
 
@@ -90,3 +93,4 @@ def ocisti():
                 shutil.rmtree(entry.path)
             else:
                 os.remove(entry.path)
+'''

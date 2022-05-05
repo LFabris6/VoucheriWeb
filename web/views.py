@@ -9,11 +9,7 @@ import mimetypes
 from django.conf import settings as django_settings
 import os
 def index(request):
-    file =os.path.join(django_settings.STATIC_ROOT, "voucheri")
-    
-    for i in os.listdir(file):
-        print(i)
-
+ 
     preuzmi = False
     if request.method == "POST":
         form = Kontakt(request.POST)
