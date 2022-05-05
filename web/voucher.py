@@ -35,6 +35,7 @@ def create(od, do, sheet, request):
 
     try:
         spoji()
+        ocisti()
 
 
    
