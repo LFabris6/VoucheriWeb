@@ -35,7 +35,7 @@ def create(od, do, sheet, request):
 
     try:
         spoji()
-        ocisti()
+        
 
 
    
@@ -95,7 +95,5 @@ def spoji():
 def ocisti():
     dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
     for i in pathlib.Path(dir).glob('*.docx'):
-        if(i.stem=="final"):
-            continue
         os.remove(i)
 

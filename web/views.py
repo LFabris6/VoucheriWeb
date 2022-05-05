@@ -4,12 +4,12 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from django.contrib import messages
 from .forms import Kontakt
-from .voucher import create
+from .voucher import create, ocisti
 import mimetypes
 from django.conf import settings as django_settings
 import os
 def index(request):
- 
+    ocisti()
     preuzmi = False
     if request.method == "POST":
         form = Kontakt(request.POST)
