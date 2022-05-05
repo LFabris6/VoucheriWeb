@@ -36,12 +36,9 @@ def create(od, do, sheet, request):
     try:
         spoji()
         
-
-
    
     except Exception as e:
         print(e)
-
 
     
     return 0
@@ -90,6 +87,7 @@ def spoji():
   
     composer.save(final_path)
     print("saved")
+    files.clear()
 
 
 def ocisti():
