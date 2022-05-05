@@ -8,9 +8,10 @@ from docx import Document
 from docxcompose.composer import Composer
 import pathlib
 
-composed = os.path.join(file, "finals")
+
 file =os.path.join(django_settings.STATIC_ROOT)
 template = "static/api/voucher.docx"
+composed = os.path.join(file, "finals")
 
 files = []
 
