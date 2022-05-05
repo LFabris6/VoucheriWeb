@@ -91,14 +91,9 @@ def spoji():
     print("saved")
 
 
-'''
 
 def ocisti():
-    dir = "static/voucheri/"
-    with os.scandir(dir) as entries:
-        for entry in entries:
-            if entry.is_dir() and not entry.is_symlink():
-                shutil.rmtree(entry.path)
-            else:
-                os.remove(entry.path)
-'''
+    dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
+    for i in pathlib.Path(dir).glob('*.docx'):
+        file_path = os.path.join(dir, i)
+        os.remove(file_path)
