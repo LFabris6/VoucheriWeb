@@ -61,7 +61,7 @@ def ispuni(ime, prezime, broj, gmail,datum):
 
 
 def spoji():
-    composed = os.path.join(file, "finals", "final1.docx")
+    composed = os.path.join(file, "finals")
     dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
     for i in pathlib.Path(dir).glob('*.docx'):
         file_path = os.path.join(dir, i)
