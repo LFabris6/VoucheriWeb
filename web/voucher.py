@@ -74,7 +74,7 @@ def spoji():
         files.append(file_path)
  
     
-    
+    final_path = file + r"\voucheri\voucher10.docx"
     result = Document(files[0])
     result.add_page_break()
     composer = Composer(result)
@@ -86,8 +86,8 @@ def spoji():
             doc.add_page_break()
 
         composer.append(doc)
-    print(composed)
-    composer.save(composed)
+  
+    composer.save(final_path)
     print("saved")
 
 
