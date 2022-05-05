@@ -95,6 +95,10 @@ def spoji():
 def ocisti():
     dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
     for i in pathlib.Path(dir).glob('*.docx'):
+        
+        if i=="final.docx":
+            continue
+    
         file_path = os.path.join(dir, i)
         os.remove(file_path)
 
