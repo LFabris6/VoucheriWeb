@@ -35,7 +35,7 @@ def create(od, do, sheet, request):
 
     try:
         spoji()
-        #ocisti()
+
 
    
     except Exception as e:
@@ -90,10 +90,3 @@ def spoji():
     composer.save(final_path)
     print("saved")
 
-
-
-def ocisti():
-    dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
-    for i in pathlib.Path(dir).glob('*.docx'):
-        file_path = os.path.join(dir, i)
-        os.remove(file_path)
