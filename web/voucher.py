@@ -6,10 +6,11 @@ import gspread
 from mailmerge import MailMerge
 from docx import Document
 from docxcompose.composer import Composer
+import pathlib
 
 file =os.path.join(django_settings.STATIC_ROOT)
 template = "static/api/voucher.docx"
-composed = file + "/finals/final.docx"
+composed = os.path.join(django_settings.STATIC_ROOT, "finals", "final.pdf")
 files = []
 
 def create(od, do, sheet, request):
@@ -31,9 +32,7 @@ def create(od, do, sheet, request):
         ispuni(ime, prezime, broj, gmail, datum)
 
     try:
-        all_dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
-        for i in os.listdir(all_dir):
-            print(i)
+        spoji()
     except Exception as e:
         print(e)
  
@@ -60,14 +59,15 @@ def ispuni(ime, prezime, broj, gmail,datum):
         print(e)
 
 
-'''
 
 def spoji():
 
-    all_dir = file + r"\voucheri"
-    for i in os.listdir(all_dir):
-        path = r'{}\{}'.format(file, i)
-        files.append(path)
+    dir = os.path.join(django_settings.STATIC_ROOT, "voucheri")
+    for i in pathlib.Path(dir).glob('*.docx'):
+        file_path = os.path.join(dir, i)
+        print(file_path)
+        files.append(file_path)
+ 
     
     
     result = Document(files[0])
@@ -81,9 +81,12 @@ def spoji():
             doc.add_page_break()
 
         composer.append(doc)
-
+    print(composed)
     composer.save(composed)
-    
+    print("saved")
+
+
+'''
 
 def ocisti():
     dir = "static/voucheri/"
