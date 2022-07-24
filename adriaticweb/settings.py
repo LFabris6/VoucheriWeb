@@ -16,7 +16,7 @@ SECRET_KEY = 'django-insecure-q^r5rkqho5ck+271z7yla=5)3au876(h0m-dwjcvovj$d9_(_z
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-ALLOWED_HOSTS = ['vouchericv.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['mpstafftest.herokuapp.com', '127.0.0.1']
 
 from firebase_admin import initialize_app
 FIREBASE_APP = initialize_app()
