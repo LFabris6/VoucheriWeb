@@ -1,8 +1,7 @@
 import os
 from pathlib import Path
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "D:/Pro/test/notifi/static/apikey2.json"
-
+os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
