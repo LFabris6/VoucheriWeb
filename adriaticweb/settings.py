@@ -1,9 +1,18 @@
 import os
 from pathlib import Path
 
-os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+import firebase_admin
+from firebase_admin import credentials
+
+cred_path = os.path.join(BASE_DIR, "static", "apikey.json")
+
+cred = credentials.Certificate(cred_path)
+firebase_admin.initialize_app(cred)
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -17,8 +26,6 @@ SECRET_KEY = 'django-insecure-q^r5rkqho5ck+271z7yla=5)3au876(h0m-dwjcvovj$d9_(_z
 DEBUG = True
 ALLOWED_HOSTS = ['mpstafftest.herokuapp.com', '127.0.0.1']
 
-from firebase_admin import initialize_app
-FIREBASE_APP = initialize_app()
 
 # Application definition
 
