@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "D:/Pro/test/notifi/static/apikey2.json"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -13,9 +15,11 @@ SECRET_KEY = 'django-insecure-q^r5rkqho5ck+271z7yla=5)3au876(h0m-dwjcvovj$d9_(_z
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1','vouchericv.herokuapp.com']
+DEBUG = True
+ALLOWED_HOSTS = ['vouchericv.herokuapp.com', '127.0.0.1']
 
+from firebase_admin import initialize_app
+FIREBASE_APP = initialize_app()
 
 # Application definition
 
@@ -28,7 +32,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "web",
     "pwa",
+    'fcm_django',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
+
+FCM_DJANGO_SETTINGS = {
+
+    "APP_VERBOSE_NAME": "My App",
+
+    "ONE_DEVICE_PER_USER" : False,
+
+    "DELETE_INACTIVE_DEVICES": True,
+}
 
 PWA_APP_NAME = 'My App'
 PWA_APP_DESCRIPTION = "My app description" 
@@ -50,7 +66,6 @@ PWA_APP_DEBUG_MODE = False
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -128,11 +143,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = [
-    #os.path.join(BASE_DIR, 'static')
-#]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Default primary key field type
