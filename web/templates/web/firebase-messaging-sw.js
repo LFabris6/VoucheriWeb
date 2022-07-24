@@ -39,4 +39,3 @@ messaging.setBackgroundMessageHandler(function(payload) {
   return self.registration.showNotification(notificationTitle,
       notificationOptions);
 });
-// [END background_handler]
