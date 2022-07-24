@@ -30,12 +30,11 @@ class ServiceWorkerView(View):
 
 
 def test(request):
-    try:
-        print(FCMDevice.objects.send_message(
-        Message(notification=Notification(title="titdle", body="bodfafy", image="imadaage_url"))
-        ))
-    except error as er:
-        print(error)
+
+    print(FCMDevice.objects.send_message(
+    Message(notification=Notification(title="titdle", body="bodfafy", image="imadaage_url"))
+    ))
+  
  
 
 
