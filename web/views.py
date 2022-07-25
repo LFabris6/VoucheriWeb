@@ -32,8 +32,8 @@ class ServiceWorkerView(View):
 def test(request):
 
     print(FCMDevice.objects.send_message(
-    Message(notification=Notification(title="titdle", body="bodfafy", image="imadaage_url"))
-    ))
+    Message(notification=Notification(title="Popravak klime", body="Popravi klimu u 545", image="https://cdn-icons-png.flaticon.com/512/3844/3844593.png")
+    )))
   
  
 
