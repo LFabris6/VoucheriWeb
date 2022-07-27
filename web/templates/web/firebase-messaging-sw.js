@@ -28,7 +28,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
   const notificationTitle = payload.body;
   const notificationOptions = {
     body: payload.body,
-    icon: payload.icon_url,
+    icon: 'https://cdn-icons-png.flaticon.com/512/1632/1632670.png',
   };
 
   self.addEventListener('notificationclick', function (event) {
