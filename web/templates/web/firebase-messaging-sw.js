@@ -25,7 +25,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   
   payload = payload.data;
-  const notificationTitle = payload.title;
+  const notificationTitle = payload.body;
   const notificationOptions = {
     body: payload.body,
     icon: payload.icon_url,
