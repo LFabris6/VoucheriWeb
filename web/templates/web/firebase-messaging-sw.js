@@ -27,7 +27,7 @@ messaging.setBackgroundMessageHandler(function(payload) {
   payload = payload.data;
   const notificationTitle = payload.body;
   const notificationOptions = {
-    body: payload.body,
+    body: payload.body+'rrrrrrrrrrrr',
     icon: 'https://cdn-icons-png.flaticon.com/512/1632/1632670.png',
   };
 
